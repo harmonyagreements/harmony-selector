@@ -29,3 +29,6 @@ gem 'mysql2', '~> 0.2.6'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem "ttfunk", :git => "https://github.com/sandal/ttfunk.git"
+gem 'prawn', :git => "git://github.com/sandal/prawn", :submodules => true 

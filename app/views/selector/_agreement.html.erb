@@ -1,0 +1,46 @@
+<p>Raw agreement param: <%= params[:agreement] %>
+<h1><%= @agreement.projectname %>
+
+<% if params[:entity] %>
+Entity
+<% else %>
+Individual
+<% end %>
+
+Contributor
+
+<% if @agreement.grant == 'cla' %>
+License
+<% else %>
+Assignment
+<% end %>
+Agreement</h1>
+<p>Thank you for your interest in contributing to <%= @agreement.projectname %> ("We" or "Us").</p>
+
+<p>This contributor agreement ("Agreement") documents the rights granted by contributors to Us. To make this document effective, please sign it and send it to Us<% if @agreement.method != "" %> by <%= @agreement.method %><% end %>, following the instructions at <%= @agreement.submission %>. This is a legally binding document, so please read it carefully before agreeing to it. The Agreement may cover more than one software project managed by Us.</p>
+
+<h3>1. Definitions</h3>
+
+<% if params[:entity] %>
+<p>"You" means any Legal Entity on behalf of whom a Contribution has been received by Us. "Legal Entity" means an entity which is not a natural person. "Affiliates" means other Legal Entities that control, are controlled by, or under common control with that Legal Entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such Legal Entity, whether by contract or otherwise, (ii) ownership of fifty percent (50%) or more of the outstanding shares or securities which vote to elect the management or other persons who direct such Legal Entity or (iii) beneficial ownership of such entity.</p>
+<% else %>
+<p>"You" means the individual who Submits a Contribution to Us.</p>
+<% end %>
+
+<p>"Contribution" means any work of authorship that is Submitted by You to Us in which You own or assert ownership of the Copyright. If You do not own the Copyright in the entire work of authorship, please follow the instructions in <%= @agreement.nonowner %>.</p>
+
+<p>"Copyright" means all rights protecting works of authorship owned or controlled by You<% if params[:entity] %> or Your Affiliates<% end %>, including copyright, moral and neighboring rights, as appropriate, for the full term of their existence including any extensions by You.</p>
+
+<p>"Material" means the work of authorship which is made available by Us to third parties. When this Agreement covers more than one software project, the Material means the work of authorship to which the Contribution was Submitted. After You Submit the Contribution, it may be included in the Material.</p>
+
+<p>"Submit" means any form of electronic, verbal, or written communication sent to Us or our representatives, including but not limited to electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, Us for the purpose of discussing and improving the Material, but excluding communication that is conspicuously marked or otherwise designated in writing by You as "Not a Contribution."</p>
+
+<p>"Submission Date" means the date on which You Submit a Contribution to Us.</p>
+
+<p>"Effective Date" means the date You execute this Agreement or the date You first Submit a Contribution to Us, whichever is earlier.</p>
+
+<% if @agreement.media != "" %>
+<p>"Media" means any portion of a Contribution which is not software.</p>
+<% end %>
+
+

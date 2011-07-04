@@ -1,0 +1,107 @@
+<%= form_for(@agreement, :url => { :controller => "selector", :action => "preview" }) do |f| %>
+  <% if @agreement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agreement.errors.count, "error") %> prohibited this agreement from being saved:</h2>
+
+      <ul>
+      <% @agreement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :version, :value => '1.0' %>
+  </div>
+  <div class="field">
+    <%= f.label(:projectname, "What's the name of your project?") %><br />
+    <%= f.text_field :projectname %>
+  </div>
+  <div class="field">
+    <%= f.label (:grant, "Which style of contributor agreement would you like?") %><br />
+    <%= f.select (:grant, [["copyright license (CLA)", "cla"],
+                           ["copyright assignment (CAA)", "caa"]]) %>
+  </div>
+  <div class="field">
+    <%= f.label (:option, "Choose an outbound license option:") %><br />
+    <%= f.select (:option, [["current license", "1"],
+                           ["list of licenses (choose below)", "2"],
+                           ["any OSI approved license", "3"],
+                           ["any FSF recommended copyleft license", "4"],
+                           ["any license", "5"]]) %>
+  </div>
+  <div class="field">
+    <select multiple size=3 id="outboundlist" name="outboundlist[]">
+      <option value="Apache-2.0">Apache License 2.0</option>
+      <option value="Artistic-1.0">Artistic License 1.0</option>
+      <option value="Artistic-2.0">Artistic License 2.0</option>
+      <option value="BSD-2-Clause">BSD "Simplified" License</option>
+      <option value="BSD-3-Clause">BSD "Revised" License</option>
+      <option value="CDDL-1.0">Common Development and Distribution License 1.0</option>
+      <option value="EPL-1.0">Eclipse Public License 1.0</option>
+      <option value="GPL-2.0">GNU General Public License v2.0</option>
+      <option value="GPL-3.0">GNU General Public License v3.0</option>
+      <option value="LGPL-2.0">GNU Lesser General Public License v2.0</option>
+      <option value="LGPL-2.1">GNU Lesser General Public License v2.1</option>
+      <option value="LGPL-3.0">GNU Lesser General Public License v3.0</option>
+      <option value="AGPL-3.0">GNU Affero General Public License v3.0</option>
+      <option value="MIT">MIT License</option>
+      <option value="MPL-1.1">Mozilla Public License 1.1</option>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label (:media, "Would you like to add a media license?") %><br />
+    <select multiple size=3 id="medialist" name="medialist[]">
+      <option value="GFDL-1.1">GNU Free Documentation License v1.1</option>
+      <option value="GFDL-1.2">GNU Free Documentation License v1.2</option>
+      <option value="GFDL-1.3">GNU Free Documentation License v1.3</option>
+      <option value="CC-BY-1.0">Creative Commons Attribution 1.0</option>
+      <option value="CC-BY-2.0">Creative Commons Attribution 2.0</option>
+      <option value="CC-BY-2.5">Creative Commons Attribution 2.5</option>
+      <option value="CC-BY-3.0">Creative Commons Attribution 3.0</option>
+      <option value="CC-BY-ND-1.0">Creative Commons Attribution No Derivatives 1.0</option>
+      <option value="CC-BY-ND-2.0">Creative Commons Attribution No Derivatives 2.0</option>
+      <option value="CC-BY-ND-2.5">Creative Commons Attribution No Derivatives 2.5</option>
+      <option value="CC-BY-ND-3.0">Creative Commons Attribution No Derivatives 3.0</option>
+      <option value="CC-BY-NC-1.0">Creative Commons Attribution Non Commercial 1.0</option>
+      <option value="CC-BY-NC-2.0">Creative Commons Attribution Non Commercial 2.0</option>
+      <option value="CC-BY-NC-2.5">Creative Commons Attribution Non Commercial 2.5</option>
+      <option value="CC-BY-NC-3.0">Creative Commons Attribution Non Commercial 3.0</option>
+      <option value="CC-BY-NC-ND-1.0">Creative Commons Attribution Non Commercial No Derivatives 1.0</option>
+      <option value="CC-BY-NC-ND-2.0">Creative Commons Attribution Non Commercial No Derivatives 2.0</option>
+      <option value="CC-BY-NC-ND-2.5">Creative Commons Attribution Non Commercial No Derivatives 2.5</option>
+      <option value="CC-BY-NC-ND-3.0">Creative Commons Attribution Non Commercial No Derivatives 3.0</option>
+      <option value="CC-BY-NC-SA-1.0">Creative Commons Attribution Non Commercial Share Alike 1.0</option>
+      <option value="CC-BY-NC-SA-2.0">Creative Commons Attribution Non Commercial Share Alike 2.0</option>
+      <option value="CC-BY-NC-SA-2.5">Creative Commons Attribution Non Commercial Share Alike 2.5</option>
+      <option value="CC-BY-NC-SA-3.0">Creative Commons Attribution Non Commercial Share Alike 3.0</option>
+      <option value="CC-BY-SA-1.0">Creative Commons Attribution Share Alike 1.0</option>
+      <option value="CC-BY-SA-2.0">Creative Commons Attribution Share Alike 2.0</option>
+      <option value="CC-BY-SA-2.5">Creative Commons Attribution Share Alike 2.5</option>
+      <option value="CC-BY-SA-3.0">Creative Commons Attribution Share Alike 3.0</option>
+      <option value="CC0-1.0">Creative Commons Zero v1.0 Universal</option>
+
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label (:method,"How will you receive signed agreements from contributors? (select all that apply)") %><br />
+    <select multiple size=4 id="methodlist" name="methodlist[]">
+      <option value="mail">mail</option>
+      <option value="email">email</option>
+      <option value="fax">fax</option>
+      <option value="electronic submission">electronic submission</option>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label (:submission, "Please provide a link with more information on how to send a signed agreement to your project:") %><br />
+    <%= f.text_field :submission %>
+  </div>
+  <div class="field">
+    <%= f.label (:nonowner, "Please provide a link with information on what contributors should do if they don't own their contribution (this may be the same page as above):") %><br />
+    <%= f.text_field :nonowner %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Preview" %>
+  </div>
+<% end %>

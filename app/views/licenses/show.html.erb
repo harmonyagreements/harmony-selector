@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Spdx:</b>
+  <%= @license.spdx %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @license.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_license_path(@license) %> |
+<%= link_to 'Back', licenses_path %>

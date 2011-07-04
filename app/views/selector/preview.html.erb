@@ -32,6 +32,7 @@
              <%= f.hidden_field :outbound, :value => @agreement.outbound %>
              <%= f.hidden_field :media, :value => @agreement.media %>
              <%= f.hidden_field :version, :value => @agreement.version %>
+             <%= f.hidden_field :jurisdiction, :value => @agreement.jurisdiction %>
              <%= f.submit "HTML" %>
             <% end %>
             <div class="pdf"><a href="docs/ha-cla-i-beta.pdf">PDF</a></div>
@@ -60,6 +61,7 @@
              <%= f.hidden_field :outbound, :value => @agreement.outbound %>
              <%= f.hidden_field :media, :value => @agreement.media %>
              <%= f.hidden_field :version, :value => @agreement.version %>
+             <%= f.hidden_field :jurisdiction, :value => @agreement.jurisdiction %>
              <%= hidden_field :entity, :value => 'true' %>
              <%= f.submit "HTML" %>
             <% end %>

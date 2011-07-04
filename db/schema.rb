@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110704030727) do
     t.integer  "option"
     t.string   "outbound"
     t.string   "media"
+    t.string   "jurisdiction"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

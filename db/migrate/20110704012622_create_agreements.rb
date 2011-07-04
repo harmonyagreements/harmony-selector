@@ -10,6 +10,7 @@ class CreateAgreements < ActiveRecord::Migration
       t.integer :option
       t.string :outbound
       t.string :media
+      t.string :jurisdiction
 
       t.timestamps
     end

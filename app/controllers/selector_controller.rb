@@ -30,16 +30,25 @@ class SelectorController < ApplicationController
   # POST /preview
   def preview
     @agreement = Agreement.new(params[:agreement])
-    @agreement.outbound = params[:outboundlist].join(",")
-    @agreement.media = params[:medialist].join(",")
-    method = params[:methodlist]
-    if method.length > 1
-      method[-1] = "or " + method[-1]
+
+    if params[:outboundlist]
+      @agreement.outbound = params[:outboundlist].join(",")
     end
-    if method.length == 2
-      @agreement.method = method.join(" ")
-    else
-      @agreement.method = method.join(", ")
+
+    if params[:medialist]
+      @agreement.media = params[:medialist].join(",")
+    end
+
+    if params[:methodlist]
+      method = params[:methodlist]
+      if method.length > 1
+        method[-1] = "or " + method[-1]
+      end
+      if method.length == 2
+        @agreement.method = method.join(" ")
+      else
+        @agreement.method = method.join(", ")
+      end
     end
 
     respond_to do |format|

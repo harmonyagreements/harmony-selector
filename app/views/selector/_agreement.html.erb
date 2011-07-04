@@ -1,4 +1,4 @@
-<p>Raw agreement param: <%= params[:agreement] %>
+<%= debug params %>
 <h1><%= @agreement.projectname %>
 
 <% if params[:entity] %>
@@ -19,7 +19,7 @@ Agreement</h1>
 
 <p>This contributor agreement ("Agreement") documents the rights granted by contributors to Us. To make this document effective, please sign it and send it to Us<% if @agreement.method != "" %> by <%= @agreement.method %><% end %>, following the instructions at <%= @agreement.submission %>. This is a legally binding document, so please read it carefully before agreeing to it. The Agreement may cover more than one software project managed by Us.</p>
 
-<h3>1. Definitions</h3>
+<h2>1. Definitions</h2>
 
 <% if params[:entity] %>
 <p>"You" means any Legal Entity on behalf of whom a Contribution has been received by Us. "Legal Entity" means an entity which is not a natural person. "Affiliates" means other Legal Entities that control, are controlled by, or under common control with that Legal Entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such Legal Entity, whether by contract or otherwise, (ii) ownership of fifty percent (50%) or more of the outstanding shares or securities which vote to elect the management or other persons who direct such Legal Entity or (iii) beneficial ownership of such entity.</p>
@@ -43,4 +43,110 @@ Agreement</h1>
 <p>"Media" means any portion of a Contribution which is not software.</p>
 <% end %>
 
+<h2>2. Grant of Rights</h2>
 
+<% if @agreement.grant == 'cla' %>
+<h3>2.1 Copyright License</h3>
+
+<p>(a) You retain ownership of the Copyright in Your Contribution and have the same rights to use or license the Contribution which You would have had without entering into the Agreement.</p>
+
+<p>(b) To the maximum extent permitted by the relevant law, You grant to Us a perpetual, worldwide, non-exclusive, transferable, royalty-free, irrevocable license under the Copyright covering the Contribution, with the right to sublicense such rights through multiple tiers of sublicensees, to reproduce, modify, display, perform and distribute the Contribution as part of the Material; provided that this license is conditioned upon compliance with Section 2.3.</p>
+
+<% else %>
+<h3>2.1 Copyright Assignment</h3>
+
+<p>(a) At the time the Contribution is Submitted, You assign to Us all right, title, and interest worldwide in all Copyright covering the Contribution; provided that this transfer is conditioned upon compliance with Section 2.3.</p>
+
+<p>(b) To the extent that any of the rights in Section 2.1(a) cannot be assigned by You to Us, You grant to Us a perpetual, worldwide, exclusive, royalty-free, transferable, irrevocable license under such non-assigned rights, with rights to sublicense through multiple tiers of sublicensees, to practice such non-assigned rights, including, but not limited to, the right to reproduce, modify, display, perform and distribute the Contribution; provided that this license is conditioned upon compliance with Section 2.3.</p>
+
+<p>(c) To the extent that any of the rights in Section 2.1(a) can neither be assigned nor licensed by You to Us, You irrevocably waive and agree never to assert such rights against Us, any of our successors in interest, or any of our licensees, either direct or indirect; provided that this agreement not to assert is conditioned upon compliance with Section 2.3.</p>
+
+<p>(d) Upon such transfer of rights to Us, to the maximum extent possible, We immediately grant to You a perpetual, worldwide, non-exclusive, royalty-free, transferable, irrevocable license under such rights covering the Contribution, with rights to sublicense through multiple tiers of sublicensees, to reproduce, modify, display, perform, and distribute the Contribution. The intention of the parties is that this license will be as broad as possible and to provide You with rights as similar as possible to the owner of the rights that You transferred. This license back is limited to the Contribution and does not provide any rights to the Material.</p>
+<% end %>
+
+<h3>2.2 Patent License</h3>
+
+<p>You grant to Us a perpetual, worldwide, non-exclusive, transferable, royalty-free, irrevocable patent license, with the right to sublicense these rights to multiple tiers of sublicensees, to make, have made, use, sell, offer for sale, import and otherwise transfer the Contribution and the Contribution in combination with the Material (and portions of such combination); provided that this license is conditioned upon compliance with Section 2.3. This patent license includes, without limitation, method, process, and apparatus claims which You <% if params[:entity] %>or Your Affiliates<% end %> own, control or have the right to grant, now or in the future, but only to the extent to which making, having made, using, selling, offering for sale, importing or otherwise transferring the Contribution, or the Contribution in combination with the Material as it exists on the Submission Date, infringes such patent claims.</p>
+
+<h3>2.3 Outbound License</h3>
+
+<% if @agreement.option == '1' %>
+<p><!--(Option One)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material (including any rights to adopt any future version of a license if permitted).</p>
+
+<% elsif @agreement.option == '2' %>
+<p><!--(Option Two)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or the following additional licenses <%= @agreement.outbound %> (including any right to adopt any future version of a license if permitted).</p>
+
+<% elsif @agreement.option == '3' %>
+<p><!--(Option Three)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or any licenses which are approved by the Open Source Initiative on or after the Effective Date, including both permissive and copyleft licenses, whether or not such licenses are subsequently disapproved (including any right to adopt any future version of a license if permitted).</p>
+
+<% elsif @agreement.option == '4' %>
+<p><!--(Option Four)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or any licenses which are recommended by the Free Software Foundation for use in GNU projects on or after the Effective Date, whether or not such licenses are subsequently disapproved (including any right to adopt any future version of a license if permitted).</p>
+
+<% else %>
+<p><!--(Option Five)-->Based on the grant of rights in Sections 2.1 and 2.2, if We include Your Contribution in a Material, We may license the Contribution under any license, including copyleft, permissive, commercial, or proprietary licenses. As a condition on the exercise of this right, We agree to also license the Contribution under the terms of the license or licenses which We are using for the Material on the Submission Date.</p>
+<% end %>
+
+<% if @agreement.media != '' %>
+<p>In addition, We may use the following licenses for Media in the Contribution: <%= @agreement.media %> (including any right to adopt any future version of a license if permitted).</p>
+<% end %>
+
+<p><span class="heading">2.4 Moral Rights.</span> If moral rights apply to the Contribution, to the maximum extent permitted by law, You waive and agree not to assert such moral rights against Us or our successors in interest, or any of our licensees, either direct or indirect.</p>
+
+<p><span class="heading">2.5 Our Rights.</span> You acknowledge that We are not obligated to use Your Contribution as part of the Material and may decide to include any Contribution We consider appropriate.</p>
+
+<p><span class="heading">2.6 Reservation of Rights.</span> Any rights not expressly <% if @agreement.grant == 'caa' %>assigned or<% end %> licensed under this section are expressly reserved by You.</p>
+
+<h2>3. Agreement</h2>
+
+<p>You confirm that:</p>
+
+<p>(a) You have the legal authority to enter into this Agreement.</p>
+
+<p>(b) You <% if params[:entity] %>or Your Affiliates<% end %> own the Copyright and patent claims covering the Contribution which are required to grant the rights under Section 2.</p>
+
+<% if params[:entity] %>
+<p>(c) The grant of rights under Section 2 does not violate any grant of rights which You or Your Affiliates have made to third parties.</p>
+
+<% else %>
+<p>(c) The grant of rights under Section 2 does not violate any grant of rights which You have made to third parties, including Your employer.  If You are an employee, You have had Your employer approve this Agreement or sign the Entity version of this document.  If You are less than eighteen years old, please have Your parents or guardian sign the Agreement.</p>
+<% end %>
+
+<p>(d) You have followed the instructions in <%= @agreement.nonowner %>, if You do not own the Copyright in the entire work of authorship Submitted.</p>
+
+<h2>4. Disclaimer</h2>
+
+<p>EXCEPT FOR THE EXPRESS WARRANTIES IN SECTION 3, THE CONTRIBUTION IS PROVIDED "AS IS". MORE PARTICULARLY, ALL EXPRESS OR IMPLIED WARRANTIES INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE EXPRESSLY DISCLAIMED BY YOU TO US<% if @agreement.grant == "caa" %> AND BY US TO YOU<% end %>. TO THE EXTENT THAT ANY SUCH WARRANTIES CANNOT BE DISCLAIMED, SUCH WARRANTY IS LIMITED IN DURATION TO THE MINIMUM PERIOD PERMITTED BY LAW.</p>
+
+<h2>5. Consequential Damage Waiver</h2>
+
+<p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL YOU <% if @agreement.grant == "caa" %> OR US<% end %> BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF ANTICIPATED SAVINGS, LOSS OF DATA, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL AND EXEMPLARY DAMAGES ARISING OUT OF THIS AGREEMENT REGARDLESS OF THE LEGAL OR EQUITABLE THEORY (CONTRACT, TORT OR OTHERWISE) UPON WHICH THE CLAIM IS BASED.</p>
+
+<h2>6. Miscellaneous</h2>
+
+<p>6.1 This Agreement will be governed by and construed in accordance with the laws of <%= @agreement.jurisdiction %> excluding its conflicts of law provisions. Under certain circumstances, the governing law in this section might be superseded by the United Nations Convention on Contracts for the International Sale of Goods ("UN Convention") and the parties intend to avoid the application of the UN Convention to this Agreement and, thus, exclude the application of the UN Convention in its entirety to this Agreement.</p>
+
+<p>6.2 This Agreement sets out the entire agreement between You and Us for Your Contributions to Us and overrides all other agreements or understandings.</p>
+
+<p>6.3  If You or We assign the rights or obligations received through this Agreement to a third party, as a condition of the assignment, that third party must agree in writing to abide by all the rights and obligations in the Agreement.</p>
+
+<p>6.4 The failure of either party to require performance by the other party of any provision of this Agreement in one situation shall not affect the right of a party to require such performance at any time in the future. A waiver of performance under a provision in one situation shall not be considered a waiver of the performance of the provision in the future or a waiver of the provision in its entirety.</p>
+
+<p>6.5 If any provision of this Agreement is found void and unenforceable, such provision will be replaced to the extent possible with a provision that comes closest to the meaning of the original provision and which is enforceable.  The terms and conditions set forth in this Agreement shall apply notwithstanding any failure of essential purpose of this Agreement or any limited remedy to the maximum extent possible under law.</p>
+
+<p>You<br />
+________________________<br />
+Name:	________________________<br />
+<% if params[:entity] %>
+Title:	________________________<br />
+<% end %>
+Address:	________________________<br />
+	________________________<br />
+</p>
+
+<p>Us<br />
+________________________<br />
+Name:	________________________<br />
+Title:	________________________<br />
+Address:	________________________<br />
+	________________________<br />
+</p>

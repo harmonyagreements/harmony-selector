@@ -40,15 +40,7 @@ class SelectorController < ApplicationController
     end
 
     if params[:methodlist]
-      method = params[:methodlist]
-      if method.length > 1
-        method[-1] = "or " + method[-1]
-      end
-      if method.length == 2
-        @agreement.method = method.join(" ")
-      else
-        @agreement.method = method.join(", ")
-      end
+      @agreement.method = params[:methodlist].join(",")
     end
 
     respond_to do |format|
@@ -60,7 +52,6 @@ class SelectorController < ApplicationController
   # POST /preview_formatted
   def preview_formatted
     @agreement = Agreement.new(params[:agreement])
-    @type = params[:type]
 
     respond_to do |format|
       format.html # show.html.erb

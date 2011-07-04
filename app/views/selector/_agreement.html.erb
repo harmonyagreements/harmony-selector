@@ -17,7 +17,7 @@ Assignment
 Agreement</h1>
 <p>Thank you for your interest in contributing to <%= @agreement.projectname %> ("We" or "Us").</p>
 
-<p>This contributor agreement ("Agreement") documents the rights granted by contributors to Us. To make this document effective, please sign it and send it to Us<% if @agreement.method != "" %> by <%= @agreement.method %><% end %>, following the instructions at <%= @agreement.submission %>. This is a legally binding document, so please read it carefully before agreeing to it. The Agreement may cover more than one software project managed by Us.</p>
+<p>This contributor agreement ("Agreement") documents the rights granted by contributors to Us. To make this document effective, please sign it and send it to Us<% if @agreement.method != "" %> by <%= @agreement.format_method %><% end %>, following the instructions at <%= @agreement.submission %>. This is a legally binding document, so please read it carefully before agreeing to it. The Agreement may cover more than one software project managed by Us.</p>
 
 <h2>1. Definitions</h2>
 
@@ -70,16 +70,16 @@ Agreement</h1>
 
 <h3>2.3 Outbound License</h3>
 
-<% if @agreement.option == '1' %>
+<% if @agreement.option == 1 %>
 <p><!--(Option One)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material (including any rights to adopt any future version of a license if permitted).</p>
 
-<% elsif @agreement.option == '2' %>
-<p><!--(Option Two)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or the following additional licenses <%= @agreement.outbound %> (including any right to adopt any future version of a license if permitted).</p>
+<% elsif @agreement.option == 2 %>
+<p><!--(Option Two)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or the following additional licenses: <%= @agreement.format_outbound %> (including any right to adopt any future version of a license if permitted).</p>
 
-<% elsif @agreement.option == '3' %>
+<% elsif @agreement.option == 3 %>
 <p><!--(Option Three)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or any licenses which are approved by the Open Source Initiative on or after the Effective Date, including both permissive and copyleft licenses, whether or not such licenses are subsequently disapproved (including any right to adopt any future version of a license if permitted).</p>
 
-<% elsif @agreement.option == '4' %>
+<% elsif @agreement.option == 4 %>
 <p><!--(Option Four)-->As a condition on the grant of rights in Sections 2.1 and 2.2, We agree to license the Contribution only under the terms of the license or licenses which We are using on the Submission Date for the Material or any licenses which are recommended by the Free Software Foundation for use in GNU projects on or after the Effective Date, whether or not such licenses are subsequently disapproved (including any right to adopt any future version of a license if permitted).</p>
 
 <% else %>
@@ -87,7 +87,7 @@ Agreement</h1>
 <% end %>
 
 <% if @agreement.media != '' %>
-<p>In addition, We may use the following licenses for Media in the Contribution: <%= @agreement.media %> (including any right to adopt any future version of a license if permitted).</p>
+<p>In addition, We may use the following licenses for Media in the Contribution: <%= @agreement.format_media %> (including any right to adopt any future version of a license if permitted).</p>
 <% end %>
 
 <p><span class="heading">2.4 Moral Rights.</span> If moral rights apply to the Contribution, to the maximum extent permitted by law, You waive and agree not to assert such moral rights against Us or our successors in interest, or any of our licensees, either direct or indirect.</p>

@@ -1,0 +1,53 @@
+<%= form_for(@agreement) do |f| %>
+  <% if @agreement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agreement.errors.count, "error") %> prohibited this agreement from being saved:</h2>
+
+      <ul>
+      <% @agreement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </div>
+  <div class="field">
+    <%= f.label :projectname %><br />
+    <%= f.text_field :projectname %>
+  </div>
+  <div class="field">
+    <%= f.label :submission %><br />
+    <%= f.text_field :submission %>
+  </div>
+  <div class="field">
+    <%= f.label :method %><br />
+    <%= f.text_field :method %>
+  </div>
+  <div class="field">
+    <%= f.label :nonowner %><br />
+    <%= f.text_field :nonowner %>
+  </div>
+  <div class="field">
+    <%= f.label :grant %><br />
+    <%= f.text_field :grant %>
+  </div>
+  <div class="field">
+    <%= f.label :option %><br />
+    <%= f.text_field :option %>
+  </div>
+  <div class="field">
+    <%= f.label :outbound %><br />
+    <%= f.text_field :outbound %>
+  </div>
+  <div class="field">
+    <%= f.label :media %><br />
+    <%= f.text_field :media %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

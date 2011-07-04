@@ -29,6 +29,11 @@ p.heading {
 	font-weight:bold;
 	color:#df3884;
 }
+span.heading {
+	font-weight:bold;
+	color:#df3884;
+}
+
 a {
 	text-decoration: none;
 		color:#505050;

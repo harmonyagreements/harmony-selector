@@ -1,5 +1,12 @@
 Harmony::Application.routes.draw do
+  resources :licenses
+
+  resources :agreements
+
   get "selector/index"
+
+  match "preview" => "selector#preview"
+  match "preview_formatted" => "selector#preview_formatted"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

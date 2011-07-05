@@ -150,3 +150,9 @@ Title: ___________________<br />
 Address: ________________<br />
 ________________________<br />
 </p>
+
+<% if params[:entity] %>
+<p align=right>Harmony (<%= @agreement.format_shortmark(true) %>) Version <%= @agreement.version %>
+<% else %>
+<p align=right>Harmony (<%= @agreement.format_shortmark(false) %>) Version <%= @agreement.version %>
+<% end %>

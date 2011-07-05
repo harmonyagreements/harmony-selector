@@ -2,29 +2,6 @@ class SelectorController < ApplicationController
   def index
     @agreement = Agreement.new
 
-    respond_to do |format|
-      format.html #index.html.erb
-      format.pdf do
-        pdf = Prawn::Document.new
-        pdf.text "Harmony [Individual|Entity] Contributor [License|Assignment] Agreement", :style => :bold, :align => :center
-#        pdf.render
-        send_data pdf.render, :filename => "hello.pdf", 
-                          :type => "application/pdf"
-      end
-    end
-  end
-
-  def generate
-    respond_to do |format|
-      format.html #generate.html.erb
-      format.pdf do
-        pdf = Prawn::Document.new
-        pdf.text "Harmony [Individual|Entity] Contributor [License|Assignment] Agreement", :style => :bold, :align => :center
-#        pdf.render
-        send_data pdf.render, :filename => "retry.pdf", 
-                          :type => "application/pdf"
-      end
-    end
   end
 
   # POST /preview
@@ -52,10 +29,21 @@ class SelectorController < ApplicationController
   # POST /preview_formatted
   def preview_formatted
     @agreement = Agreement.new(params[:agreement])
+    if params[:entity]
+      entity = true
+    else
+      entity = false
+    end
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @agreement }
+      format.pdf do
+        pdf = @agreement.format_pdf(entity)
+        filename = @agreement.filename_pdf(entity)
+
+        send_data pdf.render, :filename => filename, 
+                          :type => "application/pdf"
+      end
     end
   end
 end

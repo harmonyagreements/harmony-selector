@@ -6,7 +6,7 @@ class SelectorController < ApplicationController
 
   # POST /preview
   def preview
-    @agreement = Agreement.new(params[:agreement])
+    @agreement = Agreement.create(params[:agreement])
 
     if params[:outboundlist]
       @agreement.outbound = params[:outboundlist].join(",")
@@ -19,6 +19,8 @@ class SelectorController < ApplicationController
     if params[:methodlist]
       @agreement.method = params[:methodlist].join(",")
     end
+
+    @agreement.save
 
     respond_to do |format|
       format.html { @agreement }

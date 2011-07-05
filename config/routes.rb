@@ -1,7 +1,7 @@
 Harmony::Application.routes.draw do
-  resources :licenses
+  #resources :licenses
 
-  resources :agreements
+  #resources :agreements
 
   get "selector/index"
 

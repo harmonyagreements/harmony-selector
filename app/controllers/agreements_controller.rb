@@ -40,7 +40,7 @@ class AgreementsController < ApplicationController
   # POST /agreements
   # POST /agreements.xml
   def create
-    @agreement = Agreement.new(params[:agreement])
+    @agreement = Agreement.new(agreement_params)
 
     respond_to do |format|
       if @agreement.save
@@ -59,7 +59,7 @@ class AgreementsController < ApplicationController
     @agreement = Agreement.find(params[:id])
 
     respond_to do |format|
-      if @agreement.update_attributes(params[:agreement])
+      if @agreement.update_attributes(agreement_params)
         format.html { redirect_to(@agreement, :notice => 'Agreement was successfully updated.') }
         format.xml  { head :ok }
       else

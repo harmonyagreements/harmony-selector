@@ -20,7 +20,7 @@ class Agreement < ActiveRecord::Base
       rawlist = raw.split(",")
       fmt = []
       rawlist.each do |l|
-        license = License.find_by_spdx(l)
+        license = License.where(spdx: l).first!
         fmt.push(license.name)
       end
       if fmt.length > 1

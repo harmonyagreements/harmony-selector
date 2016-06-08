@@ -40,7 +40,7 @@ class LicensesController < ApplicationController
   # POST /licenses
   # POST /licenses.xml
   def create
-    @license = License.new(params[:license])
+    @license = License.new(license_params)
 
     respond_to do |format|
       if @license.save
@@ -59,7 +59,7 @@ class LicensesController < ApplicationController
     @license = License.find(params[:id])
 
     respond_to do |format|
-      if @license.update_attributes(params[:license])
+      if @license.update_attributes(license_params)
         format.html { redirect_to(@license, :notice => 'License was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -79,5 +79,11 @@ class LicensesController < ApplicationController
       format.html { redirect_to(licenses_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def license_params
+    params.require(:license).permit(:spdx, :name)
   end
 end

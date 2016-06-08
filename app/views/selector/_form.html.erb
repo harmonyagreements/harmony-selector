@@ -19,13 +19,13 @@
     <%= f.text_field :projectname %>
   </div>
   <div class="field">
-    <%= f.label (:grant, "Which style of contributor agreement would you like?") %><br />
-    <%= f.select (:grant, [["copyright license (CLA)", "cla"],
+    <%= f.label(:grant, "Which style of contributor agreement would you like?") %><br />
+    <%= f.select(:grant, [["copyright license (CLA)", "cla"],
                            ["copyright assignment (CAA)", "caa"]]) %>
   </div>
   <div class="field">
-    <%= f.label (:option, "Choose an outbound license option:") %><br />
-    <%= f.select (:option, [["current license", "1"],
+    <%= f.label(:option, "Choose an outbound license option:") %><br />
+    <%= f.select(:option, [["current license", "1"],
                            ["list of licenses (choose below)", "2"],
                            ["any OSI approved license", "3"],
                            ["any FSF recommended copyleft license", "4"],
@@ -51,7 +51,7 @@
     </select>
   </div>
   <div class="field">
-    <%= f.label (:media, "Would you like to add a media license?") %><br />
+    <%= f.label(:media, "Would you like to add a media license?") %><br />
     <select multiple size=3 id="medialist" name="medialist[]">
       <option value="GFDL-1.1">GNU Free Documentation License v1.1</option>
       <option value="GFDL-1.2">GNU Free Documentation License v1.2</option>
@@ -85,7 +85,7 @@
     </select>
   </div>
   <div class="field">
-    <%= f.label (:method,"How will you receive signed agreements from contributors? (select all that apply)") %><br />
+    <%= f.label(:method,"How will you receive signed agreements from contributors? (select all that apply)") %><br />
     <select multiple size=4 id="methodlist" name="methodlist[]">
       <option value="mail">mail</option>
       <option value="email">email</option>
@@ -94,15 +94,15 @@
     </select>
   </div>
   <div class="field">
-    <%= f.label (:submission, "Please provide a link with more information on how to send a signed agreement to your project:") %><br />
+    <%= f.label(:submission, "Please provide a link with more information on how to send a signed agreement to your project:") %><br />
     <%= f.text_field :submission %>
   </div>
   <div class="field">
-    <%= f.label (:nonowner, "Please provide a link with information on what contributors should do if they don't own their contribution (this may be the same page as above):") %><br />
+    <%= f.label(:nonowner, "Please provide a link with information on what contributors should do if they don't own their contribution (this may be the same page as above):") %><br />
     <%= f.text_field :nonowner %>
   </div>
   <div class="field">
-    <%= f.label (:jurisdiction, "What legal jurisdiction will the agreement be governed in? (This is often the same as the project, if it has a formal legal entity.)") %><br />
+    <%= f.label(:jurisdiction, "What legal jurisdiction will the agreement be governed in? (This is often the same as the project, if it has a formal legal entity.)") %><br />
     <%= f.text_field :jurisdiction %>
   </div>
   <div class="actions">

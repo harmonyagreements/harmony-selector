@@ -6,7 +6,7 @@ class SelectorController < ApplicationController
 
   # POST /preview
   def preview
-    @agreement = Agreement.create(params[:agreement])
+    @agreement = Agreement.create(agreement_params)
 
     if params[:outboundlist]
       @agreement.outbound = params[:outboundlist].join(",")
@@ -30,7 +30,7 @@ class SelectorController < ApplicationController
 
   # POST /preview_formatted
   def preview_formatted
-    @agreement = Agreement.new(params[:agreement])
+    @agreement = Agreement.new(agreement_params)
     if params[:entity]
       entity = true
     else

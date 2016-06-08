@@ -53,3 +53,4 @@ gem 'prawn'
 # For Heroku deployment.
 gem 'rails_12factor'
 gem 'puma'
+gem 'honeybadger'

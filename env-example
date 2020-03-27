@@ -1,0 +1,3 @@
+UID=
+INSTALL_PG_CLIENT=true
+DATABASE_HOST=postgres

@@ -92,4 +92,4 @@ RUN mkdir -p node_modules && chown $USER:$USER node_modules
 
 USER $USER
 
-RUN gem install bundler
+RUN gem install bundler -v 1.17.3
